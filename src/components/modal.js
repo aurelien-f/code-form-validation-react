@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 
 const Modal = ({ isValid, onClose }) => {
+  // Message en fonction de la saisie
   const successMessage = "Code correct!";
   const errorMessage = "Code incorrect!";
   const colorMessage = isValid ? "green" : "red";
 
   useEffect(() => {
+    // Fermeture de la modal quand on clique sur l'écran
     const handleOutsideClick = (event) => {
       if (event.target.closest(".modal-content")) return;
       onClose();

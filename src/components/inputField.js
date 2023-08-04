@@ -1,4 +1,4 @@
-// Create a new file InputField.js in the components folder
+// Utilisation de forwardRef pour passer le ref dans le component
 import React, { forwardRef } from "react";
 
 const InputField = forwardRef(({ value, onChange, onKeyDown }, ref) => (

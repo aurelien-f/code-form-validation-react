@@ -12,6 +12,7 @@ const App = () => {
     inputRefs.current[0].focus();
   }, []);
 
+  // Fonction pour ajouter la valeur à l'input et changer de focus
   const handleChange = (e, index) => {
     setErrorMessage("");
     const { value } = e.target;
@@ -20,17 +21,21 @@ const App = () => {
 
     setCode(newCode);
 
+    // Test si la saisie est bien un nombre
     const isNumberOrEmpty = /^$|^\d+$/.test(value);
 
+    // Si ce n'est pas un nombre on affiche une erreur
     if (!isNumberOrEmpty) {
       setErrorMessage("Veuillez saisir un nombre");
       return;
     }
 
+    // Changement de focus quand on saisie un nombre
     if (value.length === 1 && index < 5 && e.keyCode !== 8) {
       inputRefs.current[index + 1].focus();
     }
 
+    // Test si le code est correct ou non
     if (newCode.every((digit) => digit !== "")) {
       setIsValid(newCode.join("") === "123654");
     } else {
@@ -38,6 +43,7 @@ const App = () => {
     }
   };
 
+  // Permet de clear le formulaire avec la touche backspace
   const handleKeyDown = (e, index) => {
     setErrorMessage("");
     if (e.keyCode === 8 && e.target.value.length === 0 && index > 0) {
@@ -45,6 +51,7 @@ const App = () => {
     }
   };
 
+  // Reset du formulaire quand on ferme la modal
   const handleModalClose = () => {
     setIsValid(undefined);
     setCode(["", "", "", "", "", ""]);
